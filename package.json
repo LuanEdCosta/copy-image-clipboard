@@ -1,0 +1,30 @@
+{
+  "name": "copy-image-clipboard",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": "Luan Eduardo da Costa <luan1346@gmail.com>",
+  "description": "Lightweight copy png and jpg images to clipboard",
+  "scripts": {
+    "prepublish": "tsc"
+  },
+  "keywords": [
+    "copy",
+    "image",
+    "clipboard",
+    "png",
+    "jpg"
+  ],
+  "homepage": "https://github.com/LuanEdCosta/copy-image-clipboard",
+  "bugs": {
+    "url": "https://github.com/LuanEdCosta/copy-image-clipboard/issues"
+  },
+  "repository": {
+    "directory": "https://github.com/LuanEdCosta/copy-image-clipboard.git",
+    "type": "git"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}

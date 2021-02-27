@@ -1,4 +1,4 @@
-function copyToClipboard(blob: Blob | null) {
+export function copyToClipboard(blob: Blob | null) {
   if (blob) {
     const clipboardItem = new ClipboardItem({ [blob.type]: blob })
     navigator.clipboard.write([clipboardItem])

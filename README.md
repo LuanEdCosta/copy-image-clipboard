@@ -67,6 +67,15 @@ This project uses the asynchronous Clipboard API and the Fetch API. Use the link
 - [Clipboard API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
 - [Fetch - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
+## :handshake: Contribution
+
+Every kind of help is appreciated and this project can be better with your help.
+
+What you can do:
+
+- Take a look at the [Projects Tab](https://github.com/LuanEdCosta/copy-image-clipboard/projects) on GitHub to see some tasks that need to be done.
+- [Create an issue](https://github.com/LuanEdCosta/copy-image-clipboard/issues) to suggest an improvement or to describe a bug.
+
 ## :blue_book: License
 
 This project is under the MIT license. See the [LICENSE](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/LICENSE) for more information.

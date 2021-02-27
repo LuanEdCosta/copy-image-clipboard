@@ -3,21 +3,23 @@
 </h1>
 
 <p style="text-align: center">
-  <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/luanedcosta/copy-image-clipboard.svg">
+  <img alt="GitHub Top Language" src="https://img.shields.io/github/languages/top/luanedcosta/copy-image-clipboard.svg">
 
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/luanedcosta/copy-image-clipboard.svg">
+  <img alt="NPM Version" src="https://img.shields.io/npm/v/copy-image-clipboard">
 
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/luanedcosta/copy-image-clipboard.svg">
+  <img alt="License" src="https://img.shields.io/github/license/luanedcosta/copy-image-clipboard.svg">
 
-  <img alt="GitHub" src="https://img.shields.io/github/license/luanedcosta/copy-image-clipboard.svg">
+  <img alt="NPM Downloads Per Week" src="https://img.shields.io/npm/dw/copy-image-clipboard">
 
-   <a href="https://github.com/luanedcosta/copy-image-clipboard/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/luanedcosta/copy-image-clipboard.svg">
+  <a href="https://github.com/luanedcosta/copy-image-clipboard/commits/master">
+    <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/luanedcosta/copy-image-clipboard.svg">
   </a>
 
   <a href="https://github.com/luanedcosta/copy-image-clipboard/issues">
-    <img alt="Repository issues" src="https://img.shields.io/github/issues/luanedcosta/copy-image-clipboard.svg">
+    <img alt="Repository Issues" src="https://img.shields.io/github/issues/luanedcosta/copy-image-clipboard.svg">
   </a>
+
+  <img alt="Dependencies" src="https://img.shields.io/david/LuanEdCosta/copy-image-clipboard">
 </p>
 
 Created with :heart: by Luan Eduardo da Costa | <luan1346@gmail.com>
@@ -27,6 +29,8 @@ Created with :heart: by Luan Eduardo da Costa | <luan1346@gmail.com>
 ## :page_with_curl: About
 
 This library helps you to copy JPG and PNG images to clipboard easily. Can be used with React, Vue, Angular and other web frameworks.
+
+It uses the new browser Clipboard API and has **no external dependencies**.
 
 ## :white_check_mark: Installation
 

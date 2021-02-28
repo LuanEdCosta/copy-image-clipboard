@@ -1,3 +1,3 @@
-# Copy Image Clipboard DEMO
+# Copy Image Clipboard Demo
 
-This is the demo application that uses React.
+This project shows how to use the library with React.

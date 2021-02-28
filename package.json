@@ -1,13 +1,14 @@
 {
   "name": "copy-image-clipboard",
   "version": "1.0.1",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "author": "Luan Eduardo da Costa <luan1346@gmail.com>",
   "description": "Lightweight library to copy png and jpg images to clipboard",
   "scripts": {
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "packlist": "npx npm-packlist"
   },
   "keywords": [
     "copy",

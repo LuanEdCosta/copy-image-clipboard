@@ -4,6 +4,7 @@ node_modules
 .github
 demo
 src
+dist
 
 # Files
 .editorconfig

@@ -6,7 +6,7 @@
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./lib",
     "rootDir": "./src",
     "removeComments": true,
     "typeRoots": [
@@ -16,5 +16,7 @@
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["node_modules", "demo"],
+  "include": ["src"]
 }

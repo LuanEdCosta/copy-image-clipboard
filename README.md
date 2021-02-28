@@ -32,6 +32,8 @@ This library helps you to copy JPG and PNG images to clipboard easily. Can be us
 
 It uses the new browser Clipboard API and has **no external dependencies**.
 
+:point_right: [CLICK HERE](https://luanedcosta.github.io/copy-image-clipboard/) to see the demo project in your browser.
+
 ## :white_check_mark: Installation
 
 - Using **yarn**

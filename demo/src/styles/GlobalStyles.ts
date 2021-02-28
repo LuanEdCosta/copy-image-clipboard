@@ -25,7 +25,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     outline: 0;
 
-    background: ${({ theme }) => theme.background};
+    background: ${({ theme }) => theme.snow};
     color: ${({ theme }) => theme.primaryText};
   }
 

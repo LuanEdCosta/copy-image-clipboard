@@ -1,7 +1,7 @@
-import App from './App.json'
+import Home from './Home.json'
 
 const resource = {
-  App,
+  Home,
 }
 
 export default resource

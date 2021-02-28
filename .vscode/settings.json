@@ -3,6 +3,7 @@
         "browserslist",
         "crossorigin",
         "fontsource",
+        "nowrap",
         "packlist",
         "predeploy"
     ]

@@ -5,9 +5,10 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "author": "Luan Eduardo da Costa <luan1346@gmail.com>",
-  "description": "Lightweight copy png and jpg images to clipboard",
+  "description": "Lightweight library to copy png and jpg images to clipboard",
   "scripts": {
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "packlist": "npx npm-packlist"
   },
   "keywords": [
     "copy",
@@ -25,6 +26,12 @@
     "type": "git"
   },
   "devDependencies": {
-    "typescript": "^3.9.7"
-  }
+    "typescript": "^4.2.2"
+  },
+  "files": [
+    "dist/*",
+    "package.json",
+    "LICENSE",
+    "README.md"
+  ]
 }

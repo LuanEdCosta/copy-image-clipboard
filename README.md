@@ -78,4 +78,4 @@ What you can do:
 
 ## :blue_book: License
 
-This project is under the MIT license. See the [LICENSE](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/LICENSE) for more information.
+[MIT LICENSE](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/LICENSE) @ Luan Eduardo da Costa

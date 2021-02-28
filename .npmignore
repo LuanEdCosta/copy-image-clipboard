@@ -1,0 +1,13 @@
+# Folders
+node_modules
+.vscode
+.github
+demo
+src
+
+# Files
+.editorconfig
+.prettierignore
+.prettierrc.js
+.gitattributes
+CODE_OF_CONDUCT.md

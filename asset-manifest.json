@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/copy-image-clipboard/static/js/main.513cc8e7.chunk.js",
+    "main.js.map": "/copy-image-clipboard/static/js/main.513cc8e7.chunk.js.map",
+    "runtime-main.js": "/copy-image-clipboard/static/js/runtime-main.5d35a3bc.js",
+    "runtime-main.js.map": "/copy-image-clipboard/static/js/runtime-main.5d35a3bc.js.map",
+    "static/css/2.173b9329.chunk.css": "/copy-image-clipboard/static/css/2.173b9329.chunk.css",
+    "static/js/2.b39b779c.chunk.js": "/copy-image-clipboard/static/js/2.b39b779c.chunk.js",
+    "static/js/2.b39b779c.chunk.js.map": "/copy-image-clipboard/static/js/2.b39b779c.chunk.js.map",
+    "index.html": "/copy-image-clipboard/index.html",
+    "static/css/2.173b9329.chunk.css.map": "/copy-image-clipboard/static/css/2.173b9329.chunk.css.map",
+    "static/js/2.b39b779c.chunk.js.LICENSE.txt": "/copy-image-clipboard/static/js/2.b39b779c.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/copy-image-clipboard/static/media/open-sans-vietnamese-400-normal.5ec64a94.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5d35a3bc.js",
+    "static/css/2.173b9329.chunk.css",
+    "static/js/2.b39b779c.chunk.js",
+    "static/js/main.513cc8e7.chunk.js"
+  ]
+}

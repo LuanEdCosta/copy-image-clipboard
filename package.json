@@ -5,7 +5,7 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "author": "Luan Eduardo da Costa <luan1346@gmail.com>",
-  "description": "Lightweight copy png and jpg images to clipboard",
+  "description": "Lightweight library to copy png and jpg images to clipboard",
   "scripts": {
     "prepublish": "tsc"
   },

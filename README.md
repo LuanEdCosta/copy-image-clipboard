@@ -80,4 +80,4 @@ What you can do:
 
 ## :blue_book: License
 
-[MIT LICENSE](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/LICENSE) @ Luan Eduardo da Costa
+[MIT LICENSE](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/LICENSE) | Luan Eduardo da Costa | [Follow me on Linkedin](https://www.linkedin.com/in/luaneducosta/)

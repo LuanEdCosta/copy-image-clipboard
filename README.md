@@ -22,7 +22,7 @@
   <img alt="Dependencies" src="https://img.shields.io/david/LuanEdCosta/copy-image-clipboard">
 </p>
 
-Created with :heart: by Luan Eduardo da Costa | <luan1346@gmail.com>
+Created with :heart: by Luan Eduardo da Costa | [Follow me on Linkedin](https://www.linkedin.com/in/luaneducosta/)
 
 ---
 

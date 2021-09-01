@@ -52,10 +52,10 @@ npm i copy-image-clipboard
 
 ```javascript
 // Import the copy function
-import copyImg from 'copy-image-clipboard'
+import { copyImage } from 'copy-image-clipboard'
 
 // Use the image src attribute here
-copyImg('imageSrc')
+copyImage('src')
 ```
 
 See the `demo` folder for a more detailed example with React.

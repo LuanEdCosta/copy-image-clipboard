@@ -5,34 +5,34 @@ export function copyToClipboard(blob: Blob | null): void {
   }
 }
 
-function convertToPngAndCopyToClipboard(imgBlob: Blob): void {
-  const imageUrl = window.URL.createObjectURL(imgBlob)
+function convertToPngAndCopyToClipboard(imageBlob: Blob): void {
+  const imageUrl = window.URL.createObjectURL(imageBlob)
   const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')
+  const context = canvas.getContext('2d')
 
-  if (ctx) {
-    const imageEl = document.createElement('img')
-    imageEl.src = imageUrl
-    imageEl.crossOrigin = 'anonymous'
+  if (context) {
+    const imageElement = document.createElement('img')
+    imageElement.src = imageUrl
+    imageElement.crossOrigin = 'anonymous'
 
-    imageEl.onload = (event) => {
+    imageElement.onload = (event) => {
       const target = event.target as HTMLImageElement
       const { width, height } = target
       canvas.width = width
       canvas.height = height
-      ctx.drawImage(target, 0, 0, width, height)
+      context.drawImage(target, 0, 0, width, height)
       canvas.toBlob(copyToClipboard, 'image/png', 1)
     }
   }
 }
 
-async function copyImg(imgSrc: string): Promise<void> {
-  const response = await fetch(`${imgSrc}?crossorigin`)
+async function copyImg(imageSource: string): Promise<void> {
+  const response = await fetch(`${imageSource}?crossorigin`)
   const blob = await response.blob()
 
-  if (imgSrc.endsWith('.jpg') || imgSrc.endsWith('.jpeg')) {
+  if (imageSource.endsWith('.jpg') || imageSource.endsWith('.jpeg')) {
     convertToPngAndCopyToClipboard(blob)
-  } else if (imgSrc.endsWith('.png')) {
+  } else if (imageSource.endsWith('.png')) {
     copyToClipboard(blob)
   }
 }

@@ -6,12 +6,13 @@
   "license": "MIT",
   "author": "Luan Eduardo da Costa",
   "description": "Lightweight library to copy png and jpg images to clipboard",
-  "scripts": {
-    "build": "tsc",
-    "prepublish": "tsc",
-    "packlist": "npx npm-packlist",
-    "clean:dist": "rimraf dist",
-    "clean:modules": "rimraf node_modules"
+  "homepage": "https://github.com/LuanEdCosta/copy-image-clipboard",
+  "bugs": {
+    "url": "https://github.com/LuanEdCosta/copy-image-clipboard/issues"
+  },
+  "repository": {
+    "directory": "https://github.com/LuanEdCosta/copy-image-clipboard.git",
+    "type": "git"
   },
   "keywords": [
     "copy",
@@ -20,13 +21,12 @@
     "png",
     "jpg"
   ],
-  "homepage": "https://github.com/LuanEdCosta/copy-image-clipboard",
-  "bugs": {
-    "url": "https://github.com/LuanEdCosta/copy-image-clipboard/issues"
-  },
-  "repository": {
-    "directory": "https://github.com/LuanEdCosta/copy-image-clipboard.git",
-    "type": "git"
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc",
+    "packlist": "npx npm-packlist",
+    "clean:dist": "rimraf dist",
+    "clean:modules": "rimraf node_modules"
   },
   "devDependencies": {
     "rimraf": "^3.0.2",

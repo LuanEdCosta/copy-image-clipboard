@@ -33,7 +33,8 @@
     "typescript": "^4.2.2"
   },
   "files": [
-    "dist/*",
+    "dist/index.js",
+    "dist/index.d.ts",
     "package.json",
     "LICENSE",
     "README.md"

@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsc",
     "prepublish": "tsc",
-    "packlist": "npx npm-packlist",
+    "check:files": "npm pack --dry-run",
     "clean:dist": "rimraf dist",
     "clean:modules": "rimraf node_modules"
   },

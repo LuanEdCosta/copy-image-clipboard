@@ -77,6 +77,7 @@ What you can do:
 
 - Take a look at the [Projects Tab](https://github.com/LuanEdCosta/copy-image-clipboard/projects) on GitHub to see some tasks that need to be done.
 - [Create an issue](https://github.com/LuanEdCosta/copy-image-clipboard/issues) to suggest an improvement or to describe a bug.
+- Read the [CONTRIBUTION GUIDE](CONTRIBUTING.md) to see how to contribute with code.
 
 ## :blue_book: License
 

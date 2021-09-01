@@ -5,7 +5,7 @@ export function copyToClipboard(blob: Blob | null): void {
   }
 }
 
-function convertToPngAndCopyToClipboard(imageBlob: Blob): void {
+export function convertToPngAndCopyToClipboard(imageBlob: Blob): void {
   const imageUrl = window.URL.createObjectURL(imageBlob)
   const canvas = document.createElement('canvas')
   const context = canvas.getContext('2d')
@@ -26,7 +26,7 @@ function convertToPngAndCopyToClipboard(imageBlob: Blob): void {
   }
 }
 
-async function copyImg(imageSource: string): Promise<void> {
+export async function copyImg(imageSource: string): Promise<void> {
   const response = await fetch(`${imageSource}?crossorigin`)
   const blob = await response.blob()
 

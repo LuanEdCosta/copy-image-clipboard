@@ -26,7 +26,7 @@ export function convertToPngAndCopyToClipboard(imageBlob: Blob): void {
   }
 }
 
-export async function copyImg(imageSource: string): Promise<void> {
+export async function copyImage(imageSource: string): Promise<void> {
   const response = await fetch(`${imageSource}?crossorigin`)
   const blob = await response.blob()
 
@@ -37,4 +37,4 @@ export async function copyImg(imageSource: string): Promise<void> {
   }
 }
 
-export default copyImg
+export default copyImage

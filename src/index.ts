@@ -15,7 +15,7 @@ export function convertToPngAndCopyToClipboard(imageBlob: Blob): void {
     imageElement.src = imageUrl
     imageElement.crossOrigin = 'anonymous'
 
-    imageElement.onload = (event) => {
+    imageElement.onload = function (event) {
       const target = event.target as HTMLImageElement
       const { width, height } = target
       canvas.width = width

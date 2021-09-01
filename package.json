@@ -8,7 +8,9 @@
   "description": "Lightweight library to copy png and jpg images to clipboard",
   "scripts": {
     "prepublish": "tsc",
-    "packlist": "npx npm-packlist"
+    "packlist": "npx npm-packlist",
+    "clean:dist": "rimraf dist",
+    "clean:modules": "rimraf node_modules"
   },
   "keywords": [
     "copy",
@@ -26,6 +28,7 @@
     "type": "git"
   },
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "typescript": "^4.2.2"
   },
   "files": [

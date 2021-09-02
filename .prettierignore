@@ -1,2 +1,4 @@
-tsconfig.json
 node_modules
+coverage
+design
+dist

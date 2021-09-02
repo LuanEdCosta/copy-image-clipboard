@@ -2,18 +2,17 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": ["es2017", "es7", "es6", "dom"],
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
+    "lib": ["es5", "dom"],
     "outDir": "./dist",
     "rootDir": "./src",
-    "removeComments": true,
-    "typeRoots": ["./node_modules/@types", "./src/@types"],
     "strict": true,
+    "declaration": true,
+    "removeComments": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
-  "exclude": ["node_modules", "demo"],
+  "exclude": ["**/*.test.ts"],
   "include": ["src"]
 }

@@ -22,6 +22,7 @@
     "jpg"
   ],
   "scripts": {
+    "test": "jest",
     "build": "tsc",
     "prepublish": "tsc",
     "check:files": "npm pack --dry-run",
@@ -29,7 +30,14 @@
     "clean:modules": "rimraf node_modules"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/jest": "^27.0.1",
+    "babel-jest": "^27.1.0",
+    "jest": "^27.1.0",
     "rimraf": "^3.0.2",
+    "ts-node": "^10.2.1",
     "typescript": "^4.2.2"
   },
   "files": [

@@ -133,13 +133,14 @@ function copyImageToClipboard(imageSource) {
                 case 2:
                     pngBlob = _a.sent();
                     copyBlobToClipboard(pngBlob);
-                    return [3, 4];
+                    return [2];
                 case 3:
                     if (isPngBlob(blob)) {
                         copyBlobToClipboard(blob);
+                        return [2];
                     }
                     _a.label = 4;
-                case 4: return [2];
+                case 4: throw new Error('Cannot copy this type of image to clipboard');
             }
         });
     });

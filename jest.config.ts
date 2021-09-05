@@ -8,6 +8,7 @@ const config: Config.InitialOptions = {
   roots: ['<rootDir>/src'],
   testEnvironment: 'jsdom',
   coverageDirectory: 'coverage',
+  setupFiles: ['<rootDir>/setupTests.ts'],
 }
 
 export default config

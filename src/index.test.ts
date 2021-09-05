@@ -6,7 +6,7 @@ import {
   copyImageToClipboard,
   getBlobFromImageSource,
   getBlobFromImageElement,
-} from '..'
+} from '.'
 
 describe('All Tests', () => {
   const oldCreateElement = document.createElement.bind(document)

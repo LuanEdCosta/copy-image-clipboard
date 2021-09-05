@@ -1,4 +1,5 @@
 import { defineConfig } from 'rollup'
+import cleanup from 'rollup-plugin-cleanup'
 import { terser } from 'rollup-plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 
@@ -10,10 +11,7 @@ const licenseBanner = `/* ${libName} ${version} - ${license} */`
 
 export default defineConfig({
   input: 'src/index.ts',
-  plugins: [
-    typescript({ module: 'ESNext' }),
-    terser({ format: { comments: new RegExp(libName, 'g') } }),
-  ],
+  plugins: [typescript({ module: 'ESNext' }), cleanup({ comments: 'none' })],
   output: [
     {
       format: 'esm',
@@ -28,6 +26,7 @@ export default defineConfig({
       file: 'dist/index.browser.js',
       name: 'CopyImageClipboard',
       banner: licenseBanner,
+      plugins: [terser({ format: { comments: new RegExp(libName, 'g') } })],
     },
   ],
 })

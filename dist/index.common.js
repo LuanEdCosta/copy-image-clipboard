@@ -1,1 +1,155 @@
-"use strict";function e(e,t,n,r){return new(n||(n=Promise))((function(o,i){function u(e){try{a(r.next(e))}catch(e){i(e)}}function c(e){try{a(r.throw(e))}catch(e){i(e)}}function a(e){var t;e.done?o(e.value):(t=e.value,t instanceof n?t:new n((function(e){e(t)}))).then(u,c)}a((r=r.apply(e,t||[])).next())}))}function t(e,t){var n,r,o,i,u={label:0,sent:function(){if(1&o[0])throw o[1];return o[1]},trys:[],ops:[]};return i={next:c(0),throw:c(1),return:c(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i;function c(i){return function(c){return function(i){if(n)throw new TypeError("Generator is already executing.");for(;u;)try{if(n=1,r&&(o=2&i[0]?r.return:i[0]?r.throw||((o=r.return)&&o.call(r),0):r.next)&&!(o=o.call(r,i[1])).done)return o;switch(r=0,o&&(i=[2&i[0],o.value]),i[0]){case 0:case 1:o=i;break;case 4:return u.label++,{value:i[1],done:!1};case 5:u.label++,r=i[1],i=[0];continue;case 7:i=u.ops.pop(),u.trys.pop();continue;default:if(!(o=u.trys,(o=o.length>0&&o[o.length-1])||6!==i[0]&&2!==i[0])){u=0;continue}if(3===i[0]&&(!o||i[1]>o[0]&&i[1]<o[3])){u.label=i[1];break}if(6===i[0]&&u.label<o[1]){u.label=o[1],o=i;break}if(o&&u.label<o[2]){u.label=o[2],u.ops.push(i);break}o[2]&&u.ops.pop(),u.trys.pop();continue}i=t.call(e,u)}catch(e){i=[6,e],r=0}finally{n=o=0}if(5&i[0])throw i[1];return{value:i[0]?i[1]:void 0,done:!0}}([i,c])}}}function n(n){return e(this,void 0,void 0,(function(){return t(this,(function(e){switch(e.label){case 0:return[4,fetch(n+"?crossorigin")];case 1:return[4,e.sent().blob()];case 2:return[2,e.sent()]}}))}))}function r(e){return e.type.includes("jpeg")}function o(e){return e.type.includes("png")}function i(n){return e(this,void 0,void 0,(function(){return t(this,(function(e){return[2,new Promise((function(e,t){var r=document.createElement("img");r.crossOrigin="anonymous",r.src=n,r.onload=function(t){var n=t.target;e(n)},r.onabort=t,r.onerror=t}))]}))}))}function u(n){return e(this,void 0,void 0,(function(){return t(this,(function(e){return[2,new Promise((function(e,t){var r=document.createElement("canvas"),o=r.getContext("2d");if(o){var i=n.width,u=n.height;r.width=i,r.height=u,o.drawImage(n,0,0,i,u),r.toBlob((function(n){n?e(n):t("Cannot get blob from image element")}),"image/png",1)}}))]}))}))}function c(n){return e(this,void 0,void 0,(function(){return t(this,(function(e){switch(e.label){case 0:return[4,i(URL.createObjectURL(n))];case 1:return[4,u(e.sent())];case 2:return[2,e.sent()]}}))}))}function a(e){var t,n=((t={})[e.type]=e,t),r=new ClipboardItem(n);navigator.clipboard.write([r])}Object.defineProperty(exports,"__esModule",{value:!0}),exports.convertBlobToPng=c,exports.copyBlobToClipboard=a,exports.copyImageToClipboard=function(i){return e(this,void 0,void 0,(function(){var e;return t(this,(function(t){switch(t.label){case 0:return[4,n(i)];case 1:return r(e=t.sent())?[4,c(e)]:[3,3];case 2:return a(t.sent()),[3,4];case 3:o(e)&&a(e),t.label=4;case 4:return[2]}}))}))},exports.createImageElement=i,exports.getBlobFromImageElement=u,exports.getBlobFromImageSource=n,exports.isJpegBlob=r,exports.isPngBlob=o;
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function __awaiter(thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+}
+function __generator(thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+}
+
+function getBlobFromImageSource(imageSource) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, fetch(imageSource + "?crossorigin")];
+                case 1:
+                    response = _a.sent();
+                    return [4, response.blob()];
+                case 2: return [2, _a.sent()];
+            }
+        });
+    });
+}
+function isJpegBlob(blob) {
+    return blob.type.includes('jpeg');
+}
+function isPngBlob(blob) {
+    return blob.type.includes('png');
+}
+function createImageElement(imageSource) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2, new Promise(function (resolve, reject) {
+                    var imageElement = document.createElement('img');
+                    imageElement.crossOrigin = 'anonymous';
+                    imageElement.src = imageSource;
+                    imageElement.onload = function (event) {
+                        var target = event.target;
+                        resolve(target);
+                    };
+                    imageElement.onabort = reject;
+                    imageElement.onerror = reject;
+                })];
+        });
+    });
+}
+function getBlobFromImageElement(imageElement) {
+    return __awaiter(this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            return [2, new Promise(function (resolve, reject) {
+                    var canvas = document.createElement('canvas');
+                    var context = canvas.getContext('2d');
+                    if (context) {
+                        var width = imageElement.width, height = imageElement.height;
+                        canvas.width = width;
+                        canvas.height = height;
+                        context.drawImage(imageElement, 0, 0, width, height);
+                        canvas.toBlob(function (blob) {
+                            if (blob)
+                                resolve(blob);
+                            else
+                                reject('Cannot get blob from image element');
+                        }, 'image/png', 1);
+                    }
+                })];
+        });
+    });
+}
+function convertBlobToPng(imageBlob) {
+    return __awaiter(this, void 0, void 0, function () {
+        var imageSource, imageElement;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    imageSource = URL.createObjectURL(imageBlob);
+                    return [4, createImageElement(imageSource)];
+                case 1:
+                    imageElement = _a.sent();
+                    return [4, getBlobFromImageElement(imageElement)];
+                case 2: return [2, _a.sent()];
+            }
+        });
+    });
+}
+function copyBlobToClipboard(blob) {
+    var _a;
+    var items = (_a = {}, _a[blob.type] = blob, _a);
+    var clipboardItem = new ClipboardItem(items);
+    navigator.clipboard.write([clipboardItem]);
+}
+function copyImageToClipboard(imageSource) {
+    return __awaiter(this, void 0, void 0, function () {
+        var blob, pngBlob;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, getBlobFromImageSource(imageSource)];
+                case 1:
+                    blob = _a.sent();
+                    if (!isJpegBlob(blob)) return [3, 3];
+                    return [4, convertBlobToPng(blob)];
+                case 2:
+                    pngBlob = _a.sent();
+                    copyBlobToClipboard(pngBlob);
+                    return [3, 4];
+                case 3:
+                    if (isPngBlob(blob)) {
+                        copyBlobToClipboard(blob);
+                    }
+                    _a.label = 4;
+                case 4: return [2];
+            }
+        });
+    });
+}
+
+exports.convertBlobToPng = convertBlobToPng;
+exports.copyBlobToClipboard = copyBlobToClipboard;
+exports.copyImageToClipboard = copyImageToClipboard;
+exports.createImageElement = createImageElement;
+exports.getBlobFromImageElement = getBlobFromImageElement;
+exports.getBlobFromImageSource = getBlobFromImageSource;
+exports.isJpegBlob = isJpegBlob;
+exports.isPngBlob = isPngBlob;

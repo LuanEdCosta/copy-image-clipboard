@@ -26,14 +26,17 @@ describe('All Tests', () => {
 
   beforeAll(() => {
     window.fetch = jest.fn().mockImplementation((url: string) => {
-      const isJpeg = url.includes('.jpg') || url.includes('.jpeg')
+      let blobType = ''
 
-      const blob = new Blob([], {
-        type: isJpeg ? 'image/jpeg' : 'image/png',
-      })
+      const isJpeg = url.includes('.jpg') || url.includes('.jpeg')
+      const isPng = url.includes('.png')
+
+      if (isJpeg) blobType = 'image/jpeg'
+      else if (isPng) blobType = 'image/png'
+      else blobType = 'image/gif'
 
       return {
-        blob: () => blob,
+        blob: () => new Blob([], { type: blobType }),
       }
     })
 
@@ -105,5 +108,9 @@ describe('All Tests', () => {
     expect(navigator.clipboard.write).toBeCalled()
 
     document.createElement = oldCreateElement
+  })
+
+  it('should throw an error if the image cannot be copied', async () => {
+    await expect(copyImageToClipboard('source.gif')).rejects.toThrow()
   })
 })

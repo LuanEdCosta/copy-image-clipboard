@@ -78,7 +78,11 @@ export async function copyImageToClipboard(imageSource: string): Promise<void> {
   if (isJpegBlob(blob)) {
     const pngBlob = await convertBlobToPng(blob)
     copyBlobToClipboard(pngBlob)
+    return
   } else if (isPngBlob(blob)) {
     copyBlobToClipboard(blob)
+    return
   }
+
+  throw new Error('Cannot copy this type of image to clipboard')
 }

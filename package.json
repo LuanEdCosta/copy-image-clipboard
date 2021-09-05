@@ -24,6 +24,7 @@
   ],
   "scripts": {
     "test": "jest",
+    "dev": "rollup --config -w",
     "build": "yarn clean:dist && tsc && rollup --config",
     "prepublishOnly": "yarn build",
     "prepare": "husky install",

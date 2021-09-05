@@ -1,7 +1,7 @@
 export async function getBlobFromImageSource(
   imageSource: string,
 ): Promise<Blob> {
-  const response = await fetch(`${imageSource}?crossorigin`)
+  const response = await fetch(`${imageSource}`)
   return await response.blob()
 }
 

@@ -1,40 +1,86 @@
-export function copyToClipboard(blob: Blob | null): void {
-  if (blob) {
-    const clipboardItem = new ClipboardItem({ [blob.type]: blob })
-    navigator.clipboard.write([clipboardItem])
-  }
+export async function getBlobFromImageSource(
+  imageSource: string,
+): Promise<Blob> {
+  const response = await fetch(`${imageSource}?crossorigin`)
+  return await response.blob()
 }
 
-export function convertToPngAndCopyToClipboard(imageBlob: Blob): void {
-  const imageUrl = window.URL.createObjectURL(imageBlob)
-  const canvas = document.createElement('canvas')
-  const context = canvas.getContext('2d')
+export function isJpegBlob(blob: Blob): boolean {
+  return blob.type.includes('jpeg')
+}
 
-  if (context) {
+export function isPngBlob(blob: Blob): boolean {
+  return blob.type.includes('png')
+}
+
+export async function createImageElement(
+  imageSource: string,
+): Promise<HTMLImageElement> {
+  return new Promise(function (resolve, reject) {
     const imageElement = document.createElement('img')
-    imageElement.src = imageUrl
     imageElement.crossOrigin = 'anonymous'
+    imageElement.src = imageSource
 
     imageElement.onload = function (event) {
       const target = event.target as HTMLImageElement
-      const { width, height } = target
+      resolve(target)
+    }
+
+    imageElement.onabort = reject
+    imageElement.onerror = reject
+  })
+}
+
+export async function getBlobFromImageElement(
+  imageElement: HTMLImageElement,
+): Promise<Blob> {
+  return new Promise(function (resolve, reject) {
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
+
+    if (context) {
+      const { width, height } = imageElement
       canvas.width = width
       canvas.height = height
-      context.drawImage(target, 0, 0, width, height)
-      canvas.toBlob(copyToClipboard, 'image/png', 1)
+      context.drawImage(imageElement, 0, 0, width, height)
+
+      canvas.toBlob(
+        function (blob) {
+          if (blob) resolve(blob)
+          else reject('Cannot get blob from image element')
+        },
+        'image/png',
+        1,
+      )
     }
+  })
+}
+
+export async function convertBlobToPng(imageBlob: Blob): Promise<Blob> {
+  const imageSource = URL.createObjectURL(imageBlob)
+  const imageElement = await createImageElement(imageSource)
+  return await getBlobFromImageElement(imageElement)
+}
+
+export function copyBlobToClipboard(blob: Blob): void {
+  const items = { [blob.type]: blob } as unknown as Record<
+    string,
+    ClipboardItemData
+  >
+
+  const clipboardItem = new ClipboardItem(items)
+  navigator.clipboard.write([clipboardItem])
+}
+
+export async function copyImageToClipboard(imageSource: string): Promise<void> {
+  const blob = await getBlobFromImageSource(imageSource)
+
+  if (isJpegBlob(blob)) {
+    const pngBlob = await convertBlobToPng(blob)
+    copyBlobToClipboard(pngBlob)
+  } else if (isPngBlob(blob)) {
+    copyBlobToClipboard(blob)
   }
 }
 
-export async function copyImage(imageSource: string): Promise<void> {
-  const response = await fetch(`${imageSource}?crossorigin`)
-  const blob = await response.blob()
-
-  if (imageSource.endsWith('.jpg') || imageSource.endsWith('.jpeg')) {
-    convertToPngAndCopyToClipboard(blob)
-  } else if (imageSource.endsWith('.png')) {
-    copyToClipboard(blob)
-  }
-}
-
-export default copyImage
+export default copyImageToClipboard

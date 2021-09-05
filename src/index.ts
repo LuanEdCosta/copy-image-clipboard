@@ -82,5 +82,3 @@ export async function copyImageToClipboard(imageSource: string): Promise<void> {
     copyBlobToClipboard(blob)
   }
 }
-
-export default copyImageToClipboard

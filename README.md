@@ -102,7 +102,7 @@ getBlobFromImageElement(imageElement)
 
 ## :star: Demos
 
-- [React + TypeScript](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/demo)
+- React + TypeScript - [See in your browser](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/demo)
 
 ## :globe_with_meridians: Compatibility
 

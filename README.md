@@ -42,17 +42,29 @@ It uses the new browser Clipboard API and has **no external dependencies**.
 
 ## :white_check_mark: Installation
 
-- Using **yarn**
+### Using **yarn**
 
 ```bash
 yarn add copy-image-clipboard
 ```
 
-- Using **npm**
+### Using **npm**
 
 ```bash
 npm i copy-image-clipboard
 ```
+
+### Downloading The Source Code
+
+1. Download [dist/index.browser.js](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist/index.browser.js) or other file from the [dist](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist) folder.
+2. Put wherever you want :smile:.
+
+Abou the **dist** folder:
+
+- The **index.browser.js** file is minified to use in browsers and exposes everything from this library in a variable called **CopyImageClipboard**. Ex: `CopyImageClipboard.copyImageToClipboard('...')`.
+- The **index.js** file uses the ES Modules module format and is not minified.
+- The **index.common.js** file uses the CommonJs module format and is not minified.
+- The **index.d.ts** file contains TypeScript types.
 
 ## :zap: Usage
 
@@ -106,14 +118,16 @@ getBlobFromImageElement(imageElement)
 
 ## :globe_with_meridians: Compatibility
 
-This project uses the asynchronous Clipboard API and the Fetch API. Use the links below to see the browser compatibility:
+This project uses the asynchronous Clipboard API and Fetch API. Use the links below to see the browser compatibility:
 
 - [Clipboard API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
+- [Clipboard API - Can I Use](https://caniuse.com/?search=clipboard)
 - [Fetch - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [Fetch - Can I Use](https://caniuse.com/?search=fetch)
 
 ## :stop_sign: Known Limitations
 
-- For now you can copy only JPG and PNG images. Other image types are not supported.
+- For now you can copy only JPG and PNG images. Other image types are not supported. If you try to copy other type an error will be thrown.
 
 ## :handshake: Contribution
 

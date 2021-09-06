@@ -5,6 +5,6 @@ export declare function createImageElement(imageSource: string): Promise<HTMLIma
 export declare function getBlobFromImageElement(imageElement: HTMLImageElement): Promise<Blob>;
 export declare function convertBlobToPng(imageBlob: Blob): Promise<Blob>;
 export declare function copyBlobToClipboard(blob: Blob): Promise<void>;
-export declare function copyImageToClipboard(imageSource: string): Promise<void>;
+export declare function copyImageToClipboard(imageSource: string): Promise<Blob>;
 export declare function requestClipboardWritePermission(): Promise<boolean>;
 export declare function canCopyImagesToClipboard(): boolean;

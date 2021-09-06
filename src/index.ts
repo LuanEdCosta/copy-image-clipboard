@@ -72,16 +72,16 @@ export async function copyBlobToClipboard(blob: Blob): Promise<void> {
   await navigator.clipboard.write([clipboardItem])
 }
 
-export async function copyImageToClipboard(imageSource: string): Promise<void> {
+export async function copyImageToClipboard(imageSource: string): Promise<Blob> {
   const blob = await getBlobFromImageSource(imageSource)
 
   if (isJpegBlob(blob)) {
     const pngBlob = await convertBlobToPng(blob)
-    copyBlobToClipboard(pngBlob)
-    return
+    await copyBlobToClipboard(pngBlob)
+    return blob
   } else if (isPngBlob(blob)) {
-    copyBlobToClipboard(blob)
-    return
+    await copyBlobToClipboard(blob)
+    return blob
   }
 
   throw new Error('Cannot copy this type of image to clipboard')

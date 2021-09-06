@@ -74,12 +74,12 @@ function copyImageToClipboard(imageSource) {
         const blob = yield getBlobFromImageSource(imageSource);
         if (isJpegBlob(blob)) {
             const pngBlob = yield convertBlobToPng(blob);
-            copyBlobToClipboard(pngBlob);
-            return;
+            yield copyBlobToClipboard(pngBlob);
+            return blob;
         }
         else if (isPngBlob(blob)) {
-            copyBlobToClipboard(blob);
-            return;
+            yield copyBlobToClipboard(blob);
+            return blob;
         }
         throw new Error('Cannot copy this type of image to clipboard');
     });

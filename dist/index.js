@@ -63,9 +63,11 @@ function convertBlobToPng(imageBlob) {
     });
 }
 function copyBlobToClipboard(blob) {
-    const items = { [blob.type]: blob };
-    const clipboardItem = new ClipboardItem(items);
-    navigator.clipboard.write([clipboardItem]);
+    return __awaiter(this, void 0, void 0, function* () {
+        const items = { [blob.type]: blob };
+        const clipboardItem = new ClipboardItem(items);
+        yield navigator.clipboard.write([clipboardItem]);
+    });
 }
 function copyImageToClipboard(imageSource) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -82,5 +84,20 @@ function copyImageToClipboard(imageSource) {
         throw new Error('Cannot copy this type of image to clipboard');
     });
 }
+function requestClipboardWritePermission() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { state } = yield navigator.permissions.query({
+            name: 'clipboard-write',
+        });
+        return state === 'granted';
+    });
+}
+function canCopyImagesToClipboard() {
+    var _a;
+    const hasFetch = typeof fetch !== 'undefined';
+    const hasClipboardItem = typeof ClipboardItem !== 'undefined';
+    const hasNavigatorClipboardWriteFunction = !!((_a = navigator === null || navigator === void 0 ? void 0 : navigator.clipboard) === null || _a === void 0 ? void 0 : _a.write);
+    return hasFetch && hasClipboardItem && hasNavigatorClipboardWriteFunction;
+}
 
-export { convertBlobToPng, copyBlobToClipboard, copyImageToClipboard, createImageElement, getBlobFromImageElement, getBlobFromImageSource, isJpegBlob, isPngBlob };
+export { canCopyImagesToClipboard, convertBlobToPng, copyBlobToClipboard, copyImageToClipboard, createImageElement, getBlobFromImageElement, getBlobFromImageSource, isJpegBlob, isPngBlob, requestClipboardWritePermission };

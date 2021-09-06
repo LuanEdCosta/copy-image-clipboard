@@ -6,6 +6,8 @@ import {
   copyImageToClipboard,
   getBlobFromImageSource,
   getBlobFromImageElement,
+  canCopyImagesToClipboard,
+  requestClipboardWritePermission,
 } from '.'
 
 describe('All Tests', () => {
@@ -49,6 +51,12 @@ describe('All Tests', () => {
     Object.defineProperty(navigator, 'clipboard', {
       value: {
         write: jest.fn(),
+      },
+    })
+
+    Object.defineProperty(navigator, 'permissions', {
+      value: {
+        query: jest.fn(() => ({ state: 'granted' })),
       },
     })
   })
@@ -112,5 +120,17 @@ describe('All Tests', () => {
 
   it('should throw an error if the image cannot be copied', async () => {
     await expect(copyImageToClipboard('source.gif')).rejects.toThrow()
+  })
+
+  it('should check if can copy images to clipboard', () => {
+    expect(canCopyImagesToClipboard()).toBe(true)
+  })
+
+  it('should request the permission to write in the clipboard', async () => {
+    const hasPermission = await requestClipboardWritePermission()
+    expect(hasPermission).toBe(true)
+    expect(navigator.permissions.query).toBeCalledWith({
+      name: 'clipboard-write',
+    })
   })
 })

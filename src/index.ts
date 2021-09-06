@@ -62,14 +62,14 @@ export async function convertBlobToPng(imageBlob: Blob): Promise<Blob> {
   return await getBlobFromImageElement(imageElement)
 }
 
-export function copyBlobToClipboard(blob: Blob): void {
+export async function copyBlobToClipboard(blob: Blob): Promise<void> {
   const items = { [blob.type]: blob } as unknown as Record<
     string,
     ClipboardItemData
   >
 
   const clipboardItem = new ClipboardItem(items)
-  navigator.clipboard.write([clipboardItem])
+  await navigator.clipboard.write([clipboardItem])
 }
 
 export async function copyImageToClipboard(imageSource: string): Promise<void> {
@@ -85,4 +85,19 @@ export async function copyImageToClipboard(imageSource: string): Promise<void> {
   }
 
   throw new Error('Cannot copy this type of image to clipboard')
+}
+
+export async function requestClipboardWritePermission(): Promise<boolean> {
+  const { state } = await navigator.permissions.query({
+    name: 'clipboard-write' as PermissionName,
+  })
+
+  return state === 'granted'
+}
+
+export function canCopyImagesToClipboard(): boolean {
+  const hasFetch = typeof fetch !== 'undefined'
+  const hasClipboardItem = typeof ClipboardItem !== 'undefined'
+  const hasNavigatorClipboardWriteFunction = !!navigator?.clipboard?.write
+  return hasFetch && hasClipboardItem && hasNavigatorClipboardWriteFunction
 }

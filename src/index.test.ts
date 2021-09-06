@@ -2,6 +2,7 @@ import {
   isPngBlob,
   isJpegBlob,
   convertBlobToPng,
+  createImageElement,
   copyBlobToClipboard,
   copyImageToClipboard,
   getBlobFromImageSource,
@@ -82,6 +83,16 @@ describe('All Tests', () => {
     expect(blob).toBeInstanceOf(Blob)
   })
 
+  it('should create an image element', async () => {
+    mockDocumentCreateElement()
+
+    const imageElement = await createImageElement('source')
+    expect(imageElement).not.toBe(undefined)
+    expect(imageElement.src).not.toBe(undefined)
+
+    document.createElement = oldCreateElement
+  })
+
   it('should convert a jpeg blob to a png blob', async () => {
     mockDocumentCreateElement()
 
@@ -126,11 +137,28 @@ describe('All Tests', () => {
     expect(canCopyImagesToClipboard()).toBe(true)
   })
 
-  it('should request the permission to write in the clipboard', async () => {
+  it('should grant the permission to write in the clipboard', async () => {
     const hasPermission = await requestClipboardWritePermission()
     expect(hasPermission).toBe(true)
     expect(navigator.permissions.query).toBeCalledWith({
       name: 'clipboard-write',
+    })
+  })
+
+  it('should deny the permission to write in the clipboard', async () => {
+    const oldNavigator = navigator
+    Object.defineProperty(window, 'navigator', {
+      value: {
+        permissions: undefined,
+      },
+    })
+
+    const hasPermission = await requestClipboardWritePermission()
+    expect(navigator.permissions).toBe(undefined)
+    expect(hasPermission).toBe(false)
+
+    Object.defineProperty(window, 'navigator', {
+      value: oldNavigator,
     })
   })
 })

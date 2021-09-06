@@ -88,6 +88,8 @@ export async function copyImageToClipboard(imageSource: string): Promise<void> {
 }
 
 export async function requestClipboardWritePermission(): Promise<boolean> {
+  if (!navigator?.permissions?.query) return false
+
   const { state } = await navigator.permissions.query({
     name: 'clipboard-write' as PermissionName,
   })

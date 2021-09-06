@@ -89,7 +89,10 @@ function copyImageToClipboard(imageSource) {
     });
 }
 function requestClipboardWritePermission() {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
+        if (!((_a = navigator === null || navigator === void 0 ? void 0 : navigator.permissions) === null || _a === void 0 ? void 0 : _a.query))
+            return false;
         const { state } = yield navigator.permissions.query({
             name: 'clipboard-write',
         });

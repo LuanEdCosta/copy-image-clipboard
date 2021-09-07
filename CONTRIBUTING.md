@@ -29,7 +29,9 @@ There are many ways to contribute with this project, but we can divide it in two
 - If you created your fork a while ago be sure to pull upstream changes into your local repository.
 - Create a new branch from the `master` branch to work on!
 - Make the changes you want in the code.
-- Run the tests.
+- Run the `dev` script from the package.json.
+- Open the `src/index.html` file in the browser and test manually to make sure that everything still works.
+- Run tests using the `test` script.
 - Write or adapt tests as needed.
 - Add or change the documentation as needed.
 - Push your branch to your fork on Github, the remote `origin`.

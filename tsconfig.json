@@ -1,22 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "lib": ["es2017", "es7", "es6", "dom"],
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "removeComments": true,
-    "typeRoots": [
-      "./node_modules/@types",
-      "./src/@types"
-    ],
+    "target": "ES6",
+    "module": "CommonJS",
+    "lib": ["ES6", "DOM"],
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": ".",
     "strict": true,
+    "declaration": true,
+    "removeComments": true,
     "esModuleInterop": true,
+    "emitDeclarationOnly": true,
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["node_modules", "demo"],
+  "exclude": ["**/*.test.ts"],
   "include": ["src"]
 }

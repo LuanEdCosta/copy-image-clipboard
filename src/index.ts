@@ -1,40 +1,105 @@
-export function copyToClipboard(blob: Blob | null) {
-  if (blob) {
-    const clipboardItem = new ClipboardItem({ [blob.type]: blob })
-    navigator.clipboard.write([clipboardItem])
-  }
+export async function getBlobFromImageSource(
+  imageSource: string,
+): Promise<Blob> {
+  const response = await fetch(`${imageSource}`)
+  return await response.blob()
 }
 
-function convertToPngAndCopyToClipboard(imgBlob: any) {
-  const imageUrl = window.URL.createObjectURL(imgBlob)
-  const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')
+export function isJpegBlob(blob: Blob): boolean {
+  return blob.type.includes('jpeg')
+}
 
-  if (ctx) {
-    const imageEl = document.createElement('img')
-    imageEl.src = imageUrl
-    imageEl.crossOrigin = 'anonymous'
+export function isPngBlob(blob: Blob): boolean {
+  return blob.type.includes('png')
+}
 
-    imageEl.onload = ({ target }: any) => {
-      const { width, height } = target
+export async function createImageElement(
+  imageSource: string,
+): Promise<HTMLImageElement> {
+  return new Promise(function (resolve, reject) {
+    const imageElement = document.createElement('img')
+    imageElement.crossOrigin = 'anonymous'
+    imageElement.src = imageSource
 
+    imageElement.onload = function (event) {
+      const target = event.target as HTMLImageElement
+      resolve(target)
+    }
+
+    imageElement.onabort = reject
+    imageElement.onerror = reject
+  })
+}
+
+export async function getBlobFromImageElement(
+  imageElement: HTMLImageElement,
+): Promise<Blob> {
+  return new Promise(function (resolve, reject) {
+    const canvas = document.createElement('canvas')
+    const context = canvas.getContext('2d')
+
+    if (context) {
+      const { width, height } = imageElement
       canvas.width = width
       canvas.height = height
-      ctx.drawImage(target, 0, 0, width, height)
-      canvas.toBlob(copyToClipboard, 'image/png', 1)
+      context.drawImage(imageElement, 0, 0, width, height)
+
+      canvas.toBlob(
+        function (blob) {
+          if (blob) resolve(blob)
+          else reject('Cannot get blob from image element')
+        },
+        'image/png',
+        1,
+      )
     }
-  }
+  })
 }
 
-async function copyImg(imgSrc: string) {
-  const response = await fetch(`${imgSrc}?crossorigin`)
-  const blob = await response.blob()
-
-  if (imgSrc.endsWith('.jpg') || imgSrc.endsWith('.jpeg')) {
-    convertToPngAndCopyToClipboard(blob)
-  } else if (imgSrc.endsWith('.png')) {
-    copyToClipboard(blob)
-  }
+export async function convertBlobToPng(imageBlob: Blob): Promise<Blob> {
+  const imageSource = URL.createObjectURL(imageBlob)
+  const imageElement = await createImageElement(imageSource)
+  return await getBlobFromImageElement(imageElement)
 }
 
-export default copyImg
+export async function copyBlobToClipboard(blob: Blob): Promise<void> {
+  const items = { [blob.type]: blob } as unknown as Record<
+    string,
+    ClipboardItemData
+  >
+
+  const clipboardItem = new ClipboardItem(items)
+  await navigator.clipboard.write([clipboardItem])
+}
+
+export async function copyImageToClipboard(imageSource: string): Promise<Blob> {
+  const blob = await getBlobFromImageSource(imageSource)
+
+  if (isJpegBlob(blob)) {
+    const pngBlob = await convertBlobToPng(blob)
+    await copyBlobToClipboard(pngBlob)
+    return blob
+  } else if (isPngBlob(blob)) {
+    await copyBlobToClipboard(blob)
+    return blob
+  }
+
+  throw new Error('Cannot copy this type of image to clipboard')
+}
+
+export async function requestClipboardWritePermission(): Promise<boolean> {
+  if (!navigator?.permissions?.query) return false
+
+  const { state } = await navigator.permissions.query({
+    name: 'clipboard-write' as PermissionName,
+  })
+
+  return state === 'granted'
+}
+
+export function canCopyImagesToClipboard(): boolean {
+  const hasFetch = typeof fetch !== 'undefined'
+  const hasClipboardItem = typeof ClipboardItem !== 'undefined'
+  const hasNavigatorClipboardWriteFunction = !!navigator?.clipboard?.write
+  return hasFetch && hasClipboardItem && hasNavigatorClipboardWriteFunction
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Development</title>
+
+    <style>
+      button {
+        margin: 4px;
+      }
+    </style>
+
+    <script src="../dist/index.browser.js"></script>
+  </head>
+  <body>
+    <button id="jpeg1">Copy JPEG Image 1</button>
+    <button id="png1">Copy PNG Image 1</button>
+    <button id="first">Copy Image</button>
+    <button id="jpegDelay">Copy JPEG Image With 1s Delay</button>
+    <button id="gif1">Copy GIF Image (Will Fail)</button>
+    <button id="reqPerm">Request Clipboard Write Permission</button>
+    <button id="canCopy">Check If Can Copy Images</button>
+
+    <div id="images"></div>
+
+    <script>
+      console.log(CopyImageClipboard)
+    </script>
+
+    <script>
+      const jpegImage =
+        'https://upload.wikimedia.org/wikipedia/commons/6/65/A_long-haired_tortoiseshell_cat.jpg'
+
+      const pngImage =
+        'https://images-na.ssl-images-amazon.com/images/I/81BES%2BtsVvL.png'
+
+      const gifImage =
+        'https://media2.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif'
+
+      document.getElementById('jpeg1').addEventListener('click', async () => {
+        await CopyImageClipboard.copyImageToClipboard(jpegImage)
+        console.log('JPEG 1 Copied')
+      })
+
+      document.getElementById('png1').addEventListener('click', async () => {
+        await CopyImageClipboard.copyImageToClipboard(pngImage)
+        console.log('PNG 1 Copied')
+      })
+
+      document.getElementById('first').addEventListener('click', async () => {
+        const image = document.getElementById('images').firstElementChild
+        const blob = await CopyImageClipboard.getBlobFromImageElement(image)
+        await CopyImageClipboard.copyBlobToClipboard(blob)
+        console.log('First Image Copied')
+      })
+
+      document.getElementById('jpegDelay').addEventListener('click', () => {
+        setTimeout(() => {
+          CopyImageClipboard.copyImageToClipboard(pngImage).then(() => {
+            console.log('JPEG Copied After 1 Seconds')
+          })
+        }, 1000)
+      })
+
+      document.getElementById('gif1').addEventListener('click', async () => {
+        await CopyImageClipboard.copyImageToClipboard(gifImage)
+      })
+
+      document.getElementById('reqPerm').addEventListener('click', async () => {
+        console.log(
+          'Permission Granted:',
+          await CopyImageClipboard.requestClipboardWritePermission(),
+        )
+      })
+
+      document.getElementById('canCopy').addEventListener('click', () => {
+        const canCopyImages = CopyImageClipboard.canCopyImagesToClipboard()
+        console.log('Can Copy Images:', canCopyImages)
+      })
+    </script>
+
+    <script>
+      document.onpaste = (pasteEvent) => {
+        const items = pasteEvent.clipboardData.items
+        const blob = items[0].getAsFile()
+        const reader = new FileReader()
+
+        reader.onload = (renderEvent) => {
+          const image = document.createElement('img')
+          image.width = 150
+          image.height = 150
+          image.src = renderEvent.target.result
+          image.style = 'margin: 8px 8px 0 0'
+          document.getElementById('images').appendChild(image)
+        }
+
+        reader.readAsDataURL(blob)
+      }
+    </script>
+  </body>
+</html>

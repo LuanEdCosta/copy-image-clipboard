@@ -68,7 +68,7 @@ Abou the **dist** folder:
 
 ### Using From CDN Providers
 
-**jsDelivr**
+jsDelivr
 
 ```javascript
 <script src="https://cdn.jsdelivr.net/npm/copy-image-clipboard/dist/index.browser.js"></script>
@@ -160,7 +160,7 @@ requestClipboardWritePermission().then((hasPermission) => {
 
 ## :star: Demos
 
-- React + TypeScript - [See in your browser](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/demo)
+- React + TypeScript | [View Code](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/demo) - [View in Your Browser](https://luanedcosta.github.io/copy-image-clipboard/)
 
 ## :globe_with_meridians: Compatibility
 
@@ -179,15 +179,15 @@ Use the links below to see the browser compatibility:
 
 ## :stop_sign: Known Limitations
 
-**For now you can copy only JPG and PNG images**
+### For now you can copy only JPG and PNG images
 
 Other image types are not supported. If you try to copy other type an error will be thrown.
 
-**This library only works in pages with HTTPS**
+### This library only works in pages with HTTPS
 
 This limitation was defined by the browsers due to security risks involved when dealing with the user's clipboard.
 
-**You can only copy an image in the user's active tab/document**
+### You can only copy an image in the user's active tab/document
 
 If the user is navigating in another tab and the copy function is called, an error will be thrown.
 
@@ -199,7 +199,7 @@ What you can do:
 
 - Take a look at the [Projects Tab](https://github.com/LuanEdCosta/copy-image-clipboard/projects) on GitHub to see some tasks that need to be done.
 - [Create an issue](https://github.com/LuanEdCosta/copy-image-clipboard/issues) to suggest an improvement or to describe a bug.
-- Read the [Contribution Guide](CONTRIBUTING.md) to see how to contribute with code.
+- Read the [Contribution Guide](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/CONTRIBUTING.md) to see how to contribute with code.
 
 ## :blue_book: License
 

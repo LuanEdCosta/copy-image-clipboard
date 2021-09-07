@@ -25,7 +25,7 @@
   "scripts": {
     "test": "jest",
     "dev": "rollup --config -w",
-    "build": "yarn clean:dist && tsc && rollup --config --",
+    "build": "yarn clean:dist && tsc && rollup --config && exit 0",
     "prepublishOnly": "yarn build",
     "prepare": "husky install",
     "fix:all": "prettier --write .",
@@ -36,7 +36,7 @@
   "lint-staged": {
     "*": "prettier --write --ignore-unknown",
     "*.{js,jsx,ts,tsx}": "jest --watchAll=false --findRelatedTests",
-    "src/index.ts": [
+    "{src/index.ts,package.json}": [
       "yarn build",
       "git add dist"
     ]

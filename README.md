@@ -66,6 +66,14 @@ Abou the **dist** folder:
 - The **index.common.js** file uses the CommonJs module format and is not minified.
 - The **index.d.ts** file contains TypeScript types.
 
+### Using From CDN Providers
+
+**jsDelivr**
+
+```javascript
+<script src="https://cdn.jsdelivr.net/npm/copy-image-clipboard/dist/index.browser.js"></script>
+```
+
 ## :zap: Usage
 
 ### Copy using the image source

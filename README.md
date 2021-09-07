@@ -34,7 +34,7 @@ Created with :heart: by Luan Eduardo da Costa | [Follow me on Linkedin](https://
 
 ## :page_with_curl: About
 
-This library helps you to copy JPG and PNG images to clipboard easily. Can be used with React, Vue, Angular and other web frameworks.
+This library allows you to **copy JPG and PNG images (only)** to clipboard easily. Can be used with React, Vue, Angular and other web frameworks.
 
 It uses the new browser Clipboard API and has **no external dependencies**.
 
@@ -79,16 +79,24 @@ This approach downloads the image using `window.fetch`, transform to PNG if is J
 import { copyImageToClipboard } from 'copy-image-clipboard'
 
 // Pass the image src attribute here
-copyImageToClipboard('assets/image.png').then(() => {
-  console.log('Image Copied')
-})
+copyImageToClipboard('assets/image.png')
+  .then(() => {
+    console.log('Image Copied')
+  })
+  .catch((e) => {
+    console.log('Error: ', e.message)
+  })
 
 // Can be an URL too, but be careful because this may cause CORS errors
 copyImageToClipboard(
   'https://images-na.ssl-images-amazon.com/images/I/81BES%2BtsVvL.png',
-).then(() => {
-  console.log('Image Copied')
-})
+)
+  .then(() => {
+    console.log('Image Copied')
+  })
+  .catch((e) => {
+    console.log('Error: ', e.message)
+  })
 ```
 
 ### Copy image rendered in the document
@@ -110,6 +118,36 @@ getBlobFromImageElement(imageElement)
   .then(() => {
     console.log('Blob Copied')
   })
+  .catch((e) => {
+    console.log('Error: ', e.message)
+  })
+```
+
+### Check if can copy images to clipboard
+
+Use this function to check synchronously in runtime if can copy images to clipboard. It checks if can use the Fetch API and the Clipboard API.
+
+```javascript
+import { canCopyImagesToClipboard } from 'copy-image-clipboard'
+
+const canCopy = canCopyImagesToClipboard()
+
+console.log('Can Copy Images To Clipboard:', canCopy)
+```
+
+### Check if the permission to write data on clipboard was granted
+
+**Warnings:**
+
+- The permission to write data on the clipboard is granted automatically to pages when they are in the active tab, so generally you don't need to use this function.
+- If the browser has not implemented the Permissions API yet, this function will return `false`. Check the browser compatibility here: [Permissions API Browser Compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility).
+
+```javascript
+import { requestClipboardWritePermission } from 'copy-image-clipboard'
+
+requestClipboardWritePermission().then((hasPermission) => {
+  console.log('Has Permission:', hasPermission)
+})
 ```
 
 ## :star: Demos
@@ -118,16 +156,32 @@ getBlobFromImageElement(imageElement)
 
 ## :globe_with_meridians: Compatibility
 
-This project uses the asynchronous Clipboard API and Fetch API. Use the links below to see the browser compatibility:
+This project uses the asynchronous Clipboard API and Fetch API. Most browsers already support these two APIs natively, but for the old ones such as Internet Explorer this library doesn't work and there is nothing you can do about it.
+
+Use the links below to see the browser compatibility:
 
 - [Clipboard API - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Clipboard)
 - [Clipboard API - Can I Use](https://caniuse.com/?search=clipboard)
 - [Fetch - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 - [Fetch - Can I Use](https://caniuse.com/?search=fetch)
 
+### Enable Clipboard API Features in Firefox
+
+**From Version 87:** You need to set `dom.events.asyncClipboard.clipboardItem` preference to `true`. To change preferences in Firefox, visit `about:config`.
+
 ## :stop_sign: Known Limitations
 
-- For now you can copy only JPG and PNG images. Other image types are not supported. If you try to copy other type an error will be thrown.
+**For now you can copy only JPG and PNG images**
+
+Other image types are not supported. If you try to copy other type an error will be thrown.
+
+**This library only works in pages with HTTPS**
+
+This limitation was defined by the browsers due to security risks involved when dealing with the user's clipboard.
+
+**You can only copy an image in the user's active tab/document**
+
+If the user is navigating in another tab and the copy function is called, an error will be thrown.
 
 ## :handshake: Contribution
 

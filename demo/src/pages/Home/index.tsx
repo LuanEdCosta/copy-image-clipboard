@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { FiCopy } from 'react-icons/fi'
-import copyImage from 'copy-image-clipboard'
 import { useTranslation } from 'react-i18next'
+import { copyImageToClipboard } from 'copy-image-clipboard'
 
 import { FirstImage, SecondImage } from 'src/assets'
 
@@ -15,12 +15,12 @@ const Home: React.FC = () => {
 
   const handleCopyFirstImage = async () => {
     const imageSrc = firstImageRef.current?.src
-    if (imageSrc) await copyImage(imageSrc)
+    if (imageSrc) await copyImageToClipboard(imageSrc)
   }
 
   const handleCopySecondImage = async () => {
     const imageSrc = secondImageRef.current?.src
-    if (imageSrc) await copyImage(imageSrc)
+    if (imageSrc) await copyImageToClipboard(imageSrc)
   }
 
   return (

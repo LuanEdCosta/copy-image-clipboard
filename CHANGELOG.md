@@ -2,6 +2,12 @@
 
 This file documents all version releases.
 
+## 2.0.1 - 2021-09-09
+
+**Fixes**
+
+- Improve documentation readability
+
 ## 2.0.0 - 2021-09-06
 
 The library was completely refactored, new functionality was added and several improvements were made in the documentation.

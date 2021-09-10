@@ -133,7 +133,7 @@ getBlobFromImageElement(imageElement)
 
 ### Check if can copy images to clipboard
 
-Use this function to check synchronously in runtime if can copy images to clipboard. It checks if can use the Fetch API and the Clipboard API.
+Use this function to synchronously check at runtime whether you can copy images to the clipboard. It checks if it can use the Fetch API and the Clipboard API.
 
 ```javascript
 import { canCopyImagesToClipboard } from 'copy-image-clipboard'
@@ -147,7 +147,7 @@ console.log('Can Copy Images To Clipboard:', canCopy)
 
 **Warnings:**
 
-- The permission to write data on the clipboard is granted automatically to pages when they are in the active tab, so generally you don't need to use this function.
+- Permission to write data to the clipboard is automatically granted to pages when they are in the active tab, so generally you don't need to use this function.
 - If the browser has not implemented the Permissions API yet, this function will return `false`. Check the browser compatibility here: [Permissions API Browser Compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Permissions_API#browser_compatibility).
 
 ```javascript
@@ -164,7 +164,7 @@ requestClipboardWritePermission().then((hasPermission) => {
 
 ## :globe_with_meridians: Compatibility
 
-This project uses the asynchronous Clipboard API and Fetch API. Most browsers already support these two APIs natively, but for the old ones such as Internet Explorer this library doesn't work and there is nothing you can do about it.
+This project uses the asynchronous Clipboard API and Fetch API. Most browsers already support natively these two APIs, but for the old ones like Internet Explorer this library doesn't work and there's nothing you can do about it.
 
 Use the links below to see the browser compatibility:
 

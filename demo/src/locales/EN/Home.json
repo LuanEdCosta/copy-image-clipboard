@@ -1,4 +1,8 @@
 {
   "copyPngImage": "Copy PNG Image",
-  "copyJpgImage": "Copy JPG Image"
+  "copyJpgImage": "Copy JPG Image",
+  "pasteText": "Paste Here",
+  "pasteImageAlt": "Pasted",
+  "firstImageAlt": "First",
+  "secondImageAlt": "Second"
 }

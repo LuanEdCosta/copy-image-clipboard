@@ -3,8 +3,7 @@ import styled, { css } from 'styled-components'
 export const Button = styled.button.attrs((props) => ({
   type: props.type || 'button',
 }))`
-  min-height: 5.6rem;
-  width: 100%;
+  min-height: 5rem;
 
   outline: none;
   border: none;
@@ -15,14 +14,14 @@ export const Button = styled.button.attrs((props) => ({
   justify-content: center;
 
   font-weight: bold;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: white;
 
-  padding: 0.8rem 1.6rem;
+  padding: 0.8rem 2.4rem;
 
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
   user-select: none;
+  transition: all 0.2s ease-in-out;
 
   background: ${(props) => props.theme.accent};
 

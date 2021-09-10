@@ -11,10 +11,6 @@ export const GlobalStyles = createGlobalStyle`
   html {
     font-size: 62.5%;
     overflow-x: hidden;
-
-    @media only screen and (min-width: 1400px) {
-      font-size: 75%;
-    }
   }
 
   html, body, #root {
@@ -25,16 +21,16 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     outline: 0;
 
-    background: ${({ theme }) => theme.snow};
+    background: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.primaryText};
   }
 
   body, #root {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
-  input, button, select, code, textarea {
-    font-size: 1.6rem;
+  button {
+    font-size: 1.4rem;
     color: ${({ theme }) => theme.primaryText};
   }
 

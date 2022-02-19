@@ -2,6 +2,16 @@
 
 This file documents all version releases.
 
+## 2.1.0 - 2022-02-19
+
+**Features**
+
+- Add JSDoc comments to all exported functions
+
+**Fixes**
+
+- Improve documentation organization and clarity
+
 ## 2.0.1 - 2021-09-09
 
 **Fixes**

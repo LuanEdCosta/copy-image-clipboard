@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/Logo.png" alt="Copy Image Clipboard Logo" width="100" height="100" />
+  <img src="assets/Logo.png" alt="Copy Image Clipboard Logo" />
 </p>
 
 <h1 align="center">
@@ -36,9 +36,9 @@
     <a href="https://luanedcosta.github.io/copy-image-clipboard">👉 TEST IN YOUR BROWSER 👈</a>
 </h5>
 
-:white_check_mark: Copy JPG or PNG images to clipboard easily.
-:white_check_mark: It is a lightweight library with `0 dependencies`.
-:white_check_mark: You can use with React, Vue, Angular or with any other framework.
+- :white_check_mark: Copy JPG or PNG images to clipboard easily.
+- :white_check_mark: It is a lightweight library with `0 dependencies`.
+- :white_check_mark: You can use with React, Vue, Angular or with any other framework.
 
 ---
 
@@ -78,7 +78,7 @@ With a CDN Provider you will be using the [dist/index.browser.js](https://github
 <summary>Download the entire repository</summary>
 <br>
 
-- Using `degit` to download this repository without the git history:
+- Use `degit` to download this repository without the git history:
 
 ```
 npx degit LuanEdCosta/copy-image-clipboard

@@ -12,18 +12,42 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+/**
+ * Gets a blob from an image source attribute using the Fetch API.
+ *
+ * @param {string} imageSource The image source attribute.
+ * @returns {Promise<Blob>} A promise that resolves to a image blob.
+ */
 function getBlobFromImageSource(imageSource) {
     return __awaiter(this, void 0, void 0, function* () {
         const response = yield fetch(`${imageSource}`);
         return yield response.blob();
     });
 }
+/**
+ * Checks if is a JPEG image blob.
+ *
+ * @param {Blob} blob A blob.
+ * @returns {boolean} A boolean indicating if the blob is a JPEG image or not.
+ */
 function isJpegBlob(blob) {
     return blob.type.includes('jpeg');
 }
+/**
+ * Checks if is a PNG image blob.
+ *
+ * @param {Blob} blob A blob.
+ * @returns {boolean} A boolean indicating if the blob is a PNG image or not.
+ */
 function isPngBlob(blob) {
     return blob.type.includes('png');
 }
+/**
+ * Created an image element for a given image source attribute.
+ *
+ * @param {string} imageSource The image source attribute.
+ * @returns {Promise<HTMLImageElement>} A promise that resolves to an image element. Rejects the promise if cannot create an image element.
+ */
 function createImageElement(imageSource) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(function (resolve, reject) {
@@ -39,6 +63,12 @@ function createImageElement(imageSource) {
         });
     });
 }
+/**
+ * Gets a blob from an image element.
+ *
+ * @param {HTMLImageElement} imageElement An image element
+ * @returns {Promise<Blob>} A Promise that resolves to a image blob. Rejects the promise if cannot get a blob from the image element.
+ */
 function getBlobFromImageElement(imageElement) {
     return __awaiter(this, void 0, void 0, function* () {
         return new Promise(function (resolve, reject) {
@@ -59,6 +89,12 @@ function getBlobFromImageElement(imageElement) {
         });
     });
 }
+/**
+ * Converts a JPEG image blob to PNG.
+ *
+ * @param {Blob} imageBlob JPEG blob that will be converted to PNG.
+ * @returns {Promise<Blob>} A Promise that resolves to a PNG image blob. Rejects the promise if cannot create an image element or if cannot get a blob from the image element.
+ */
 function convertBlobToPng(imageBlob) {
     return __awaiter(this, void 0, void 0, function* () {
         const imageSource = URL.createObjectURL(imageBlob);
@@ -66,6 +102,13 @@ function convertBlobToPng(imageBlob) {
         return yield getBlobFromImageElement(imageElement);
     });
 }
+/**
+ * Copies a blob to user's clipboard.
+ *
+ * Throws an error if cannot write on the user's clipboard.
+ *
+ * @param {Blob} blob Blob to be copied.
+ */
 function copyBlobToClipboard(blob) {
     return __awaiter(this, void 0, void 0, function* () {
         const items = { [blob.type]: blob };
@@ -73,6 +116,17 @@ function copyBlobToClipboard(blob) {
         yield navigator.clipboard.write([clipboardItem]);
     });
 }
+/**
+ * Copies a PNG or JPEG image to clipboard.
+ *
+ * This function downloads the image to copy with it's original dimensions.
+ *
+ * - If the image is JPEG it will be converted automatically to PNG and then copied.
+ * - If the image is not PNG or JPEG an error will be thrown.
+ *
+ * @param {string} imageSource The image source attribute.
+ * @returns {Promise<Blob>} A promise that resolves to a blob. Generally you don't need to use the returned blob for nothing.
+ */
 function copyImageToClipboard(imageSource) {
     return __awaiter(this, void 0, void 0, function* () {
         const blob = yield getBlobFromImageSource(imageSource);
@@ -88,6 +142,16 @@ function copyImageToClipboard(imageSource) {
         throw new Error('Cannot copy this type of image to clipboard');
     });
 }
+/**
+ * Requests the permission to write data on the user's clipboard.
+ *
+ * Reasons why you generally don't need to use this function:
+ *
+ * - The Permission to write data on the clipboard is automatically granted to pages when they are in the browser active tab.
+ * - If the browser has not implemented the Permissions API yet, this function will return false.
+ *
+ * @returns {Promise<boolean>} A Promise that resolves to a boolean indicating if the permission was granted or not.
+ */
 function requestClipboardWritePermission() {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
@@ -99,6 +163,11 @@ function requestClipboardWritePermission() {
         return state === 'granted';
     });
 }
+/**
+ * Checks if can copy images to the clipboard using the Fetch API and the Clipboard API.
+ *
+ * @returns {Boolean} A boolean indicating if can copy or not.
+ */
 function canCopyImagesToClipboard() {
     var _a;
     const hasFetch = typeof fetch !== 'undefined';

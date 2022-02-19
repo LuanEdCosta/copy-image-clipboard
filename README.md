@@ -33,7 +33,7 @@
 </p>
 
 <h5 align="center">
-    <a href="https://luanedcosta.github.io/copy-image-clipboard">👉 TEST IN YOUR BROWSER 👈</a>
+    <a href="https://luanedcosta.github.io/copy-image-clipboard" target="_blank">👉 TEST IN YOUR BROWSER 👈</a>
 </h5>
 
 - :white_check_mark: Copy JPG or PNG images to clipboard easily.

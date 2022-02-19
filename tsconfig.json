@@ -8,7 +8,7 @@
     "baseUrl": ".",
     "strict": true,
     "declaration": true,
-    "removeComments": true,
+    "removeComments": false,
     "esModuleInterop": true,
     "emitDeclarationOnly": true,
     "forceConsistentCasingInFileNames": true

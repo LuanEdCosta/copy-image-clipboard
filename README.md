@@ -1,8 +1,12 @@
-<h1 style="text-align: center">
+<p align="center">
+  <img src="assets/Logo.png" alt="Copy Image Clipboard Logo" />
+</p>
+
+<h1 align="center">
   <span>Copy Image Clipboard</span>
 </h1>
 
-<p style="text-align: center">
+<p align="center">
   <a href="https://www.npmjs.com/package/copy-image-clipboard">
     <img alt="NPM Version" src="https://img.shields.io/npm/v/copy-image-clipboard">
   </a>
@@ -24,55 +28,101 @@
   </a>
 
   <a href="https://www.npmjs.com/package/copy-image-clipboard?activeTab=dependencies">
-    <img alt="Dependencies" src="https://img.shields.io/david/LuanEdCosta/copy-image-clipboard">
+    <img alt="Dependencies" src="https://img.shields.io/librariesio/release/npm/copy-image-clipboard/2.0.1">
   </a>
 </p>
 
-Created with :heart: by Luan Eduardo da Costa | [Follow me on Linkedin](https://www.linkedin.com/in/luaneducosta/)
+<h5 align="center">
+    <a href="https://luanedcosta.github.io/copy-image-clipboard" target="_blank">👉 TEST IN YOUR BROWSER 👈</a>
+</h5>
+
+- :white_check_mark: Copy JPG or PNG images to clipboard easily.
+- :white_check_mark: It is a lightweight library with `0 dependencies`.
+- :white_check_mark: You can use with React, Vue, Angular or with any other framework.
 
 ---
 
-## :page_with_curl: About
+## :arrow_down: Installation
 
-This library allows you to **copy JPG and PNG images (only)** to clipboard easily. Can be used with React, Vue, Angular and other web frameworks.
-
-It uses the new browser Clipboard API and has **no external dependencies**.
-
-:point_right: [CLICK HERE](https://luanedcosta.github.io/copy-image-clipboard/) to see the demo project in your browser.
-
-## :white_check_mark: Installation
-
-### Using **yarn**
+### Using a package manager
 
 ```bash
 yarn add copy-image-clipboard
 ```
 
-### Using **npm**
-
 ```bash
 npm i copy-image-clipboard
 ```
 
-### Downloading The Source Code
+### Without a package manager
 
-1. Download [dist/index.browser.js](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist/index.browser.js) or other file from the [dist](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist) folder.
-2. Put wherever you want :smile:.
+Without a package manager you have to choose one of these:
 
-Abou the **dist** folder:
+<details>
+<summary>Use from a CDN Provider</summary>
+<br>
 
-- The **index.browser.js** file is minified to use in browsers and exposes everything from this library in a variable called **CopyImageClipboard**. Ex: `CopyImageClipboard.copyImageToClipboard('...')`.
-- The **index.js** file uses the ES Modules module format and is not minified.
-- The **index.common.js** file uses the CommonJs module format and is not minified.
-- The **index.d.ts** file contains TypeScript types.
-
-### Using From CDN Providers
-
-jsDelivr
+**jsDelivr**
 
 ```javascript
 <script src="https://cdn.jsdelivr.net/npm/copy-image-clipboard/dist/index.browser.js"></script>
 ```
+
+With a CDN Provider you will be using the [dist/index.browser.js](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist/index.browser.js) file. _See more about this file below_.
+
+---
+
+</details>
+
+<details>
+<summary>Download the entire repository</summary>
+<br>
+
+- Use `degit` to download this repository without the git history:
+
+```
+npx degit LuanEdCosta/copy-image-clipboard
+```
+
+- Download a zipped file on GitHub:
+
+<img src="assets/DownloadRepository.png" alt="Download the entire repository" />
+
+After downloading the repository, you can use a file from the [dist folder](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist) in your code. _See more about the dist folder files below_.
+
+---
+
+</details>
+
+<details>
+<summary>Download a file from the dist folder</summary>
+<br>
+
+Open the [dist folder](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist) and choose one of these files to download:
+
+- [dist/index.browser.js](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist/index.browser.js)
+- [dist/index.common.js](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist/index.common.js)
+- [dist/index.js](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist/index.js)
+
+_See more about these files below._
+
+---
+
+</details>
+
+#### About the [dist folder](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist)
+
+- **index.browser.js**
+  - Minified to use in browsers
+  - Exposes everything in a variable called **CopyImageClipboard**. e.g. `CopyImageClipboard.copyImageToClipboard('...')`.
+- **index.js**
+  - Uses ESM module format.
+  - Is not minified.
+- **index.common.js**
+  - Uses CommonJs module format.
+  - Is not minified.
+- **index.d.ts**
+  - Contains TypeScript types.
 
 ## :zap: Usage
 
@@ -107,7 +157,7 @@ copyImageToClipboard(
   })
 ```
 
-### Copy image rendered in the document
+### Copy the rendered image into the document
 
 With this approach no HTTP request is necessary, but the image is copied with the image element dimensions in the document. If the image is 1000x1000 but is shown as 300x300, the copied image will be 300x300. Use `copyImageToClipboard` function to copy the image with its original dimensions.
 
@@ -160,7 +210,9 @@ requestClipboardWritePermission().then((hasPermission) => {
 
 ## :star: Demos
 
-- React + TypeScript | [View Code](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/demo) - [View in Your Browser](https://luanedcosta.github.io/copy-image-clipboard/)
+- React + TypeScript - [Show me the code](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/demo/src/pages/Home/index.tsx) | [See it running in your browser](https://luanedcosta.github.io/copy-image-clipboard/)
+
+_You can contribute with more examples if you want_ :smile:
 
 ## :globe_with_meridians: Compatibility
 
@@ -179,17 +231,17 @@ Use the links below to see the browser compatibility:
 
 ## :stop_sign: Known Limitations
 
-### For now you can copy only JPG and PNG images
+- **For now you can copy only JPG and PNG images**
 
-Other image types are not supported. If you try to copy other type an error will be thrown.
+  Other image types are not supported. If you try to copy other type an error will be thrown.
 
-### This library only works in pages with HTTPS
+- **This library only works in pages with HTTPS**
 
-This limitation was defined by the browsers due to security risks involved when dealing with the user's clipboard.
+  This limitation was defined by the browsers due to security risks involved when dealing with the user's clipboard.
 
-### You can only copy an image in the user's active tab/document
+- **You can only copy an image in the user's active tab/document**
 
-If the user is navigating in another tab and the copy function is called, an error will be thrown.
+  If the user is navigating in another tab and the copy function is called, an error will be thrown.
 
 ## :handshake: Contribution
 
@@ -197,7 +249,6 @@ Every kind of help is appreciated and this project can be better with your help.
 
 What you can do:
 
-- Take a look at the [Projects Tab](https://github.com/LuanEdCosta/copy-image-clipboard/projects) on GitHub to see some tasks that need to be done.
 - [Create an issue](https://github.com/LuanEdCosta/copy-image-clipboard/issues) to suggest an improvement or to describe a bug.
 - Read the [Contribution Guide](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/CONTRIBUTING.md) to see how to contribute with code.
 

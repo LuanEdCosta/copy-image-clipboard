@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/Logo.png" alt="Copy Image Clipboard Logo" />
+  <img src="/assets/Logo.png" alt="Copy Image Clipboard Logo" />
 </p>
 
 <h1 align="center">
@@ -86,7 +86,7 @@ npx degit LuanEdCosta/copy-image-clipboard
 
 - Download a zipped file on GitHub:
 
-<img src="assets/DownloadRepository.png" alt="Download the entire repository" />
+<img src="/assets/DownloadRepository.png" alt="Download the entire repository" />
 
 After downloading the repository, you can use a file from the [dist folder](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist) in your code. _See more about the dist folder files below_.
 
@@ -211,6 +211,7 @@ requestClipboardWritePermission().then((hasPermission) => {
 ## :star: Demos
 
 - React + TypeScript - [Show me the code](https://github.com/LuanEdCosta/copy-image-clipboard/blob/master/demo/src/pages/Home/index.tsx) | [See it running in your browser](https://luanedcosta.github.io/copy-image-clipboard/)
+- Pure JavaScript Example - [See on Codepen.io](https://codepen.io/LuanEduardo/pen/eYeMddx)
 
 _You can contribute with more examples if you want_ :smile:
 

@@ -2,6 +2,12 @@
 
 This file documents all version releases.
 
+## 2.1.1 - 2022-02-20
+
+**Docs**
+
+- Add a pure JavaScript example to REAME.md
+
 ## 2.1.0 - 2022-02-19
 
 **Features**

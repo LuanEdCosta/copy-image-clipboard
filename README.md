@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/assets/Logo.png" alt="Copy Image Clipboard Logo" />
+  <img src="https://raw.githubusercontent.com/LuanEdCosta/copy-image-clipboard/master/assets/Logo.png" alt="Copy Image Clipboard Logo" />
 </p>
 
 <h1 align="center">
@@ -86,7 +86,7 @@ npx degit LuanEdCosta/copy-image-clipboard
 
 - Download a zipped file on GitHub:
 
-<img src="/assets/DownloadRepository.png" alt="Download the entire repository" />
+<img src="https://raw.githubusercontent.com/LuanEdCosta/copy-image-clipboard/master/assets/DownloadRepository.png" alt="Download the entire repository" />
 
 After downloading the repository, you can use a file from the [dist folder](https://github.com/LuanEdCosta/copy-image-clipboard/tree/master/dist) in your code. _See more about the dist folder files below_.
 

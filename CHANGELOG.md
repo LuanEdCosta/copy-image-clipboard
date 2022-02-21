@@ -2,6 +2,12 @@
 
 This file documents all version releases.
 
+## 2.1.2 - 2022-02-20
+
+**Docs**
+
+- Fix README.md image URLs to work fine in NPM
+
 ## 2.1.1 - 2022-02-20
 
 **Docs**

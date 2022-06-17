@@ -103,13 +103,15 @@ function convertBlobToPng(imageBlob) {
  *
  * Throws an error if cannot write on the user's clipboard.
  *
- * @param {Blob} blob Blob to be copied.
+ * @param {Blob[]} blobs Blobs to copy.
  */
-function copyBlobToClipboard(blob) {
+function copyBlobToClipboard(...blobs) {
     return __awaiter(this, void 0, void 0, function* () {
-        const items = { [blob.type]: blob };
-        const clipboardItem = new ClipboardItem(items);
-        yield navigator.clipboard.write([clipboardItem]);
+        const clipboardItems = blobs.map((blob) => {
+            const item = { [blob.type]: blob };
+            return new ClipboardItem(item);
+        });
+        yield navigator.clipboard.write(clipboardItems);
     });
 }
 /**
@@ -136,6 +138,35 @@ function copyImageToClipboard(imageSource) {
             return blob;
         }
         throw new Error('Cannot copy this type of image to clipboard');
+    });
+}
+/**
+ * Copies multiple PNG or JPEG images to clipboard.
+ *
+ * This function downloads all images to copy with the original dimensions.
+ *
+ * - If an image is JPEG it will be converted automatically to PNG and then copied.
+ * - If an image is not PNG or JPEG an error will be thrown.
+ *
+ * @param {string[]} imageSources Image sources.
+ * @returns {Promise<Blob[]>} A promise that resolves to an array of blobs. Generally you don't need to use the returned blob for nothing.
+ */
+function copyMultipleImagesToClipboard(...imageSources) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const promises = imageSources.map((imageSource) => {
+            return getBlobFromImageSource(imageSource);
+        });
+        const blobs = yield Promise.all(promises);
+        const pngBlobPromises = blobs.map((blob) => {
+            if (isPngBlob(blob))
+                return blob;
+            else if (isJpegBlob(blob))
+                return convertBlobToPng(blob);
+            return Promise.reject('Can only copy JPG and PNG images');
+        });
+        const pngBlobs = yield Promise.all(pngBlobPromises);
+        yield copyBlobToClipboard(...pngBlobs);
+        return pngBlobs;
     });
 }
 /**
@@ -172,4 +203,4 @@ function canCopyImagesToClipboard() {
     return hasFetch && hasClipboardItem && hasNavigatorClipboardWriteFunction;
 }
 
-export { canCopyImagesToClipboard, convertBlobToPng, copyBlobToClipboard, copyImageToClipboard, createImageElement, getBlobFromImageElement, getBlobFromImageSource, isJpegBlob, isPngBlob, requestClipboardWritePermission };
+export { canCopyImagesToClipboard, convertBlobToPng, copyBlobToClipboard, copyImageToClipboard, copyMultipleImagesToClipboard, createImageElement, getBlobFromImageElement, getBlobFromImageSource, isJpegBlob, isPngBlob, requestClipboardWritePermission };

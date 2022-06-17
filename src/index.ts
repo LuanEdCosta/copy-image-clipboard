@@ -103,16 +103,19 @@ export async function convertBlobToPng(imageBlob: Blob): Promise<Blob> {
  *
  * Throws an error if cannot write on the user's clipboard.
  *
- * @param {Blob} blob Blob to be copied.
+ * @param {Blob[]} blobs Blobs to copy.
  */
-export async function copyBlobToClipboard(blob: Blob): Promise<void> {
-  const items = { [blob.type]: blob } as unknown as Record<
-    string,
-    ClipboardItemData
-  >
+export async function copyBlobToClipboard(...blobs: Blob[]): Promise<void> {
+  const clipboardItems = blobs.map((blob) => {
+    const item = { [blob.type]: blob } as unknown as Record<
+      string,
+      ClipboardItemData
+    >
 
-  const clipboardItem = new ClipboardItem(items)
-  await navigator.clipboard.write([clipboardItem])
+    return new ClipboardItem(item)
+  })
+
+  await navigator.clipboard.write(clipboardItems)
 }
 
 /**
@@ -139,6 +142,39 @@ export async function copyImageToClipboard(imageSource: string): Promise<Blob> {
   }
 
   throw new Error('Cannot copy this type of image to clipboard')
+}
+
+/**
+ * Copies multiple PNG or JPEG images to clipboard.
+ *
+ * This function downloads all images to copy with the original dimensions.
+ *
+ * - If an image is JPEG it will be converted automatically to PNG and then copied.
+ * - If an image is not PNG or JPEG an error will be thrown.
+ *
+ * @param {string[]} imageSources Image sources.
+ * @returns {Promise<Blob[]>} A promise that resolves to an array of blobs. Generally you don't need to use the returned blob for nothing.
+ */
+export async function copyMultipleImagesToClipboard(
+  ...imageSources: string[]
+): Promise<Blob[]> {
+  const promises = imageSources.map((imageSource) => {
+    return getBlobFromImageSource(imageSource)
+  })
+
+  const blobs = await Promise.all(promises)
+
+  const pngBlobPromises = blobs.map((blob) => {
+    if (isPngBlob(blob)) return blob
+    else if (isJpegBlob(blob)) return convertBlobToPng(blob)
+    return Promise.reject('Can only copy JPG and PNG images')
+  })
+
+  const pngBlobs = await Promise.all(pngBlobPromises)
+
+  await copyBlobToClipboard(...pngBlobs)
+
+  return pngBlobs
 }
 
 /**

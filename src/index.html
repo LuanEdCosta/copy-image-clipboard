@@ -22,6 +22,7 @@
     <button id="gif1">Copy GIF Image (Will Fail)</button>
     <button id="reqPerm">Request Clipboard Write Permission</button>
     <button id="canCopy">Check If Can Copy Images</button>
+    <button id="copyMultiple">Copy Multiple Images</button>
 
     <div id="images"></div>
 
@@ -79,12 +80,17 @@
         const canCopyImages = CopyImageClipboard.canCopyImagesToClipboard()
         console.log('Can Copy Images:', canCopyImages)
       })
+
+      document
+        .getElementById('copyMultiple')
+        .addEventListener('click', async () => {
+          await CopyImageClipboard.copyMultipleImagesToClipboard(gifImage)
+          console.log('All Images Were Copied')
+        })
     </script>
 
     <script>
       document.onpaste = (pasteEvent) => {
-        const items = pasteEvent.clipboardData.items
-        const blob = items[0].getAsFile()
         const reader = new FileReader()
 
         reader.onload = (renderEvent) => {
@@ -96,7 +102,12 @@
           document.getElementById('images').appendChild(image)
         }
 
-        reader.readAsDataURL(blob)
+        const items = pasteEvent.clipboardData.items
+
+        items.forEach((item) => {
+          const blob = item.getAsFile()
+          reader.readAsDataURL(blob)
+        })
       }
     </script>
   </body>

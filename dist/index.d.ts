@@ -45,9 +45,9 @@ export declare function convertBlobToPng(imageBlob: Blob): Promise<Blob>;
  *
  * Throws an error if cannot write on the user's clipboard.
  *
- * @param {Blob} blob Blob to be copied.
+ * @param {Blob[]} blobs Blobs to copy.
  */
-export declare function copyBlobToClipboard(blob: Blob): Promise<void>;
+export declare function copyBlobToClipboard(...blobs: Blob[]): Promise<void>;
 /**
  * Copies a PNG or JPEG image to clipboard.
  *
@@ -60,6 +60,18 @@ export declare function copyBlobToClipboard(blob: Blob): Promise<void>;
  * @returns {Promise<Blob>} A promise that resolves to a blob. Generally you don't need to use the returned blob for nothing.
  */
 export declare function copyImageToClipboard(imageSource: string): Promise<Blob>;
+/**
+ * Copies multiple PNG or JPEG images to clipboard.
+ *
+ * This function downloads all images to copy with the original dimensions.
+ *
+ * - If an image is JPEG it will be converted automatically to PNG and then copied.
+ * - If an image is not PNG or JPEG an error will be thrown.
+ *
+ * @param {string[]} imageSources Image sources.
+ * @returns {Promise<Blob[]>} A promise that resolves to an array of blobs. Generally you don't need to use the returned blob for nothing.
+ */
+export declare function copyMultipleImagesToClipboard(...imageSources: string[]): Promise<Blob[]>;
 /**
  * Requests the permission to write data on the user's clipboard.
  *

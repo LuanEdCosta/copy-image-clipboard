@@ -84,7 +84,10 @@
       document
         .getElementById('copyMultiple')
         .addEventListener('click', async () => {
-          await CopyImageClipboard.copyMultipleImagesToClipboard(gifImage)
+          await CopyImageClipboard.copyMultipleImagesToClipboard(
+            jpegImage,
+            pngImage,
+          )
           console.log('All Images Were Copied')
         })
     </script>
@@ -104,10 +107,11 @@
 
         const items = pasteEvent.clipboardData.items
 
-        items.forEach((item) => {
+        for (let i = 0; i < items.length; i++) {
+          const item = items[i]
           const blob = item.getAsFile()
           reader.readAsDataURL(blob)
-        })
+        }
       }
     </script>
   </body>

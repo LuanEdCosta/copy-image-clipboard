@@ -3,11 +3,11 @@ import cleanup from 'rollup-plugin-cleanup'
 import { terser } from 'rollup-plugin-terser'
 import typescript from '@rollup/plugin-typescript'
 
-import { version } from './package.json'
+import packageJson from './package.json' assert { type: 'json' }
 
-const libName = 'copy-image-clipboard'
+const { name, version } = packageJson
 const license = 'Licensed MIT @ Luan Eduardo da Costa'
-const licenseBanner = `/* ${libName} ${version} - ${license} */`
+const licenseBanner = `/* ${name} ${version} - ${license} */`
 
 export default defineConfig({
   input: 'src/index.ts',
@@ -26,7 +26,7 @@ export default defineConfig({
       file: 'dist/index.browser.js',
       name: 'CopyImageClipboard',
       banner: licenseBanner,
-      plugins: [terser({ format: { comments: new RegExp(libName, 'g') } })],
+      plugins: [terser({ format: { comments: new RegExp(name, 'g') } })],
     },
   ],
 })
